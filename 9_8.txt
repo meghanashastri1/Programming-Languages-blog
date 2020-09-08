@@ -3,6 +3,7 @@
 - The functions I was able to implement were select_evens, select_odds, member, append, revert, zipp. I tried to do merge/merge_sort but I couldn’t find the solution.
 - All of these functions were defined recursively. I referenced help online in places such as stack overflow since I am unfamiliar with Haskell and the syntax for defining functions.
 - It seems that for all these functions, you define the name of the function and the data type that the input is going to be, then you define what data type the output is going to be. After that, the function will start at the head and recursively go through the list and then it finally reaches the tail.
+- I didn't understand how to do less_equals
 - Even if I wasn’t able to complete the merge_sort, I am familiar with the algorithm, where you divide the array in 2 halves and then call merge_sort in the 2 halves, then join them the 2 sorted halves. Splitting in 2 halves is linear, which is O(n), and it requires additional space for the unsorted array, so it is O(nlogn)
 
 
