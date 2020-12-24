@@ -1,0 +1,41 @@
+One concept outside of class that I wanted to learn more about is error handling in Haskell. Error handling in imperative programming languages is very important because it allows you to test code without having the compiler crash and having to debug if a problem does not work out. And since syntax for functional programming is very different, especially haskell, I thought it would be useful to know this. I also wanted to know if recursion frequently gives errors if there is a logical step missing. I found that there are 4 types of errors to look out for in Haskell
+
+1. Exception
+- this is most similar to imperative programming languages in that you can use the keywords throw, try, and catch to test if the machine is running out of swap, program is terminating, file does not exist etc. 
+ - example of logging into a website:
+    login :: Details -> IO ()
+    login details = do
+      code <- tryLogin details
+      case code of
+        (200,val) -> setLoginContext val
+        (_,err)   -> throw (LoginFailed err)
+       
+
+2. Error (pure code)
+- for these errors that cause the compiler to crash, we can use the Maybe datatype to return a base case if the input does not pass through the function. Two of these data types are Nothing and Just. 
+- example: 
+    case listToMaybe ages of
+      Nothing -> defaultAge
+      Just first -> first
+ - the data type Maybe is unique to Haskell and not found in imperative programming languages 
+
+3. Error using the either type
+- Either type is a type of error handling data type which basically means that you have an incorrect input but your program is not broken. 
+- example of how it is used: 
+    data ParseError = ParseError !Pos !Text
+    runParser :: Parser a -> Text -> Either ParseError a
+    main = do
+      line <- getLine
+      case runParser emailParser line of
+        Right (user,domain) -> print ("The email is OK.",user,domain)
+        Left (pos,err) -> putStrLn ("Parse error on " <> pos <> ": " <> err)
+
+4. No value using the maybe type 
+- if there is no value in a variable, simply use the maybe type. 
+- example:
+lookup :: Eq a => a -> [(a,b)] -> Maybe b
+case lookup name person of
+  Nothing -> "no name specified"
+  Just name -> "Name: " <> name
+- here the nothing data type will return a value if there is no value in the input. 
+- the Just data type will act as a constructor that will by default print "Name:" even if there is not name given 
