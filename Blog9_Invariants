@@ -1,0 +1,25 @@
+Invariants were difficult to understand for me because I didn't understand the examples of variants in class, why they only consistented of 2 variables, and why they were given in pairs. Looking back I realized I didn't understand that the 2 variables usually came from reducing an expression to normal form, and I didn't think about comparing 2 expressions reduced to normal form to find an invariant that fits both of them 
+
+An invariant is formally defined as: A function 
+P:A→B is an invariant for an ARS (A,→) ifa→b ⟹ P(a)=P(b)for all a,b∈A.
+The way I see it, an invariant is a formula that you can use to predict that the normal form of an expression looks like, as well as whether the normal form you have calculated is accurate when looking at the expression before it's reduced. 
+
+For example, given the following expression XaaaYbbz with rules:
+aYb -> a$bY
+a$b -> $bca
+ac -> ca
+x$b -> x
+xc -> cx
+YZ -> Z
+aZ -> z
+xZ -> []
+
+After reducing with these rules, we get the normal form cccccc. 
+
+The invariant here is #c's = #a's * #b's, which is true because we have 6 c's = 3 a's * 3 b's
+
+With this invariant, we confirm that the normal form is true and we can also predict the normal form of any similar expression where the only thing that changes is the # of a's or b's. For example: XXaaaYbbbz will reduce to ccccccccc because 3 a's * 3 b's = 9 c's.
+
+I wanted to write this example down because it helped me understand how to do pattern matching to find an invariant, and also help me understand why invariants are important. 
+
+Finding a common function using pattern matching is something that I have done with imperative progrmaming in the past before this class, so it's nice to see how calculating a mathematical expression and help predict solutions to real world problems. 
