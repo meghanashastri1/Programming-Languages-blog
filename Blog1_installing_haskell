@@ -1,0 +1,49 @@
+In the beginning of this course, we downloaded Haskell on our local computers. Since I used a macbook, I followed the instructions for downloading Haskell on mac OS. 
+The link below shows how you can download on any OS. There was no problems with installing haskell by following the instructions here:
+- https://www.haskell.org/platform/
+
+
+Once we install Haskell we can explore the Glasgow Haskell Compiler interactive (GHCi for short). 
+- To run the GHCi we can simply type 'ghci' 
+- to exit we can do either ctrl + D or :quit
+- once the ghci starts running, the prelude and standard packages are loaded by default. These packages have basic expressions and data types that are defined beforehand
+
+Some examples of GHCi operations:
+1. 1 + 1 
+  - returns 2
+2. 6 - 3 
+  - returns 3
+3. 4 * 4 
+  - returns 16
+4. 6 / 2 
+  - returns 3.0
+5. 10 `div` 2
+  - returns 5
+6. (1 + 2) / 3
+  - returns 1.0
+7. 5 `mod` 2
+
+Most of these operations are available in any compiler of any language. However, as we can see there are a few operations that have syntax unique to haskell:
+1. difference between / and `div`
+  - the operator / returns a float, and `div` returns an integer
+2. using `mod` vs. %
+  - in Haskell the operator % is not in the scope of an integer, so we use the syntax `mod` instead
+
+The syntax of `function` is a way to define the structure of parameters for a function in Haskell. For example,  5 `div` 2 would likely be written as div(5,2) in an imperative programming language.
+
+Haskell is a functional programming language. Functional programming is mathematical, meaning that all the computation is considered as a combination of separate mathematical functions. A function or an expression is said to have side effects if it modifies some state outside its scope or has an observable interaction with its calling functions besides the returning value. Functional programming minimizes this side effects.  
+The state changes do not depend on the function inputs. It is useful when understanding the behaviour of the program. 
+- the most important thing to note about functional oprogramming is that a function input cannot be modified. for example: we can have x = 6 but we can't change x so that x = x * 2, instead we have to assign a new variable: y = x * 2
+    - this ensures that a state does not change and that there are no side effects.
+    - this way of programming is harder compared to imperative programming. 
+    
+Languages such as C/C#/C++, Java, Python etc. are imperative programming languages, and probably what most programmers and students are familiar with. Imperative programming allows you to use statements to changes a program's state. Basically, the emphasis is on the logical steps of the program instead of only using a mathematical approach. 
+- here we use conditional statements to write logic 
+- this type of programming allows you to modify a functional input, example: x = 6, x = x * 2
+
+Though functional programming is harder to learn, there are some advantages to it:
+- uses less memory on CPU and therefore less chances of side effects
+- due to declarative and deterministic nature, there will be less bugs and it will be an efficient program design 
+- smaller time complexity since functional programming gives limited approaches on how to program a solution
+
+As we continue throughout the course, we will learn how to use Haskell as a tool for building functions using functional programming logic. 
