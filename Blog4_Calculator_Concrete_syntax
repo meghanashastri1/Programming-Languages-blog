@@ -1,0 +1,42 @@
+While abstract syntax is helpful for minimizing side effects, we want to be able to define syntax that is easier for us. Concrete syntax allows us to do this and we get the best of both worlds with not increasing side effects and being able to parse expressions in a way that we are most familiar with. 
+Concrete syntax in haskell focuses on what the expression looks like in order to parse it. This means that we look at tokens (usually operators) and numbers. 
+Concrete syntax can be represented by concrete syntax trees as such: 
+
+       Exp 
+    /   |   \
+   /    |    \
+  /     +     \
+ /             \
+ 2.             3 
+ 
+ concrete syntax means that expressions and tokens can be shown in different ways: 
+     2 + 3                         -- infix
+    
+    (+ 2 3)                       -- prefix
+  
+    (2 3 +)                       -- postfix
+  
+    bipush 2                      -- JVM 
+    bipush 3 
+    iadd 
+  
+    the sum of 2 and 3            -- English
+   
+ We want to define concrete syntax where the token is an infix because that is what aligns with building a linear tree and with our logic in english. 
+ 
+
+ 
+In order to define concrete syntax, we need to define what each expression represents for both integers and operators:
+Exp -> Exp '+' Exp1                                
+Exp -> Exp1                                        
+Exp1 -> Exp1 '*' Exp2                              
+Exp1 -> Exp2                                       
+Exp2 -> Integer                                         
+Exp2 -> '(' Exp ')'
+
+using a BNFC parser, we can evaluate an expression to an integer because integers given to us in BNFC. this makes it easier for us to parse string tokens into numbers or operators. 
+
+now, we can parse 1*2+3 in the haskell compiler, and it will print out the linear tree as Plus (Times(1)(2) (3)). 
+
+After reading over what abstract and concrete syntax is, I now see what it means to both have programming language that is easy for the user to understand as well as how important it is for your program to be efficient. Abstract syntax is difficult for us to understand because we are not taught to deal with mathematical expressions through recursion, even though recursion is the definiion of mathematics. Learning abstract syntax helped me understand concrete syntax because it taught me how to use trees to parse different types of expressions and store that information. Concrete syntax is important because it still uses recursion to calcualate results, but because we define the syntax, we can type expressions in a format that we are familiar with without compromising on performance or increasing side effects. It is extremely useful to use both in functional programming. 
+ 
