@@ -1,0 +1,69 @@
+Abstract Syntax in haskell looks at what the significant parts of an expression are. Abstract Syntax Trees are the best way to visualize this and understand how to parse expressions.
+For example: 
+
+      plus
+    /      \
+   /        \
+  2          3 
+  
+  
+      Times 
+    /      \
+   /        \
+  10          2 
+  
+ These trees show the semantically significant structure rather than how tokens are grouped together. Because we don't know the tokens that are in the function, we have to use natural numbers instead of integers to build calculators using abstract syntax. 
+ 
+ The expressions used in a plus or times function would defined as this: 
+ data Exp = Num Int | Plus Exp Exp | Times Exp Exp
+ 
+ We use the numbers S and O, where O represents 0 and S represents the successor. The data type for the successor is defined as such:
+ data NN = O | S NN
+ 
+ Next the expression will be evaluated as a natural number:
+ eval : Exp -> NN
+ 
+And now we can parse an integer into a natural number. 
+eval (Num 0) = O
+eval (Num n) = S (eval (Num (n-1)))
+
+example: eval (Times (2) (3)) = S ( S ( S ( S ( S ( S ( O ) ) ) ) ) )
+
+Notice how the eval function uses recursion on itself to add an S after parenthesis until n = 0? Similarly, we use recursion for multiple types of functions in abstract syntax. 
+-- addition
+add :: NN -> NN -> NN
+add O n = n
+add (S n) m = S (add n m)
+-- test: add (S O) (S (S O))
+
+-- multiplication
+mult :: NN -> NN -> NN
+mult O n = O                        -- 0 * n = 0
+mult (S O) n = n                    -- 1 * n = n
+mult (S n) m = add m (mult n m)     -- (1 + n) * m = m + (n * m)
+-- test: mult (S (S O)) (S (S ( S O)))
+
+
+-- subtract
+subtr :: NN -> NN -> NN
+subtr O n = O
+subtr n O = n
+subtr (S n) (S m) = subtr n m
+-- test: subtr (S (S O)) (S O)
+
+
+-- division
+divi :: NN -> NN -> NN
+divi n m  = if n==m then S O
+                    else if less n m then O
+                                     else add (S O) (divi (subtr n m) m) -- n/m = 1 + (n-m)/m
+-- test: divi (S(S(S(S(S O))))) (S(S O))
+
+
+Next, we will learn how to build haskell functions using concrete syntax, since it is preferable for us to calculate 1*2+3 rather than Plus ((Times (1) (2)) (3)). 
+
+
+
+ 
+ 
+ 
