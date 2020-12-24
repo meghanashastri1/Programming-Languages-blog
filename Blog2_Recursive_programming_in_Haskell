@@ -1,0 +1,39 @@
+Recursion is when a function is called inside of itself. recursions use a base case, which is a scenario that terminates the program instead of using recursion to find the answer, and it uses recursive steps that reduces all successive cases to the base case.
+
+Fibonacci is a classic example of where recursion is applied. The cases for any fibonacci sequence is the following:
+Fib(0)=0 \\base case 1
+Fib(1)=1 \\base case 2
+For all integers n > 1:
+Fib(n) = Fib(n-1) + Fib(n-2)
+
+This can be implemented in an imperative language like Java for example:
+
+public static long fib(long n) {
+      if ((n == 0) || (n == 1)){
+         return n;
+      }
+      else{
+         return fib(n - 1) + fib(n - 2);
+      }
+}
+
+Why is recursion and examples like fibonacci important? Because Haskell is a functional programming language, functions have to be written in mathematical definitions, and recursion is a mathematical definition. 
+We can write recursion examples in imperative languages to show that recursive functions are functional, and we can use this as a guide to define functions in Haskell. If Haskell is a functional programming language, that means most Haskell functions will use recursion. 
+
+To define in Haskell:
+
+fib 0 = 0 
+fib 1 = 1 
+fib n = fib(n-1) + fib(n-2)
+
+This is similar to the example above in java, where we define the base case for if n = 0 or 1, and beyond that fib(n) is a recursion on itself. 
+
+A few other examples of recursive functions in Haskell include: factorial, list-based recursion, plusOne, mult, add etc. One example that we haven't done in class is logarithmic functions. 
+Below is a haskell function for log base 2:
+
+log2 1 = 0
+log2 n = 1 + log2 (n `div` 2)
+
+here we have a base case where log base 2 = 1, and then if n > 1, then log2 is called on itself to find the largest power of 2 that is less than or equal to its argument. 
+
+Next we will talk about building calculators using different recursive functions in haskell, and we will talk about different types of syntax in Haskell. 
