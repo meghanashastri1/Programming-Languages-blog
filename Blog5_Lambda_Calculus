@@ -1,0 +1,28 @@
+When first introduced to Lambda Calculus, I was confused on how it relates to creating programming languages. From what I first knew, lambda calculus uses the lambda symbol and variable names in expressions, which can eventually reduce down to an expression with only variables. I was wrong on this and started to understand that there are 3 concepts in lambda calculus:
+1. abstraction
+2. variables
+3. applicaition
+
+Abstraction is where the function is defined, variables are names used in the function, and application is where the function is applied to an argument. for example: 
+given (λx.M) (M N)
+
+- x is the variable: 
+- λ is the function
+- (M N) is the argument, M and N are lambda terms. 
+
+
+the syntax may be very confusing, so we can use imperative programming to help us understand the logic of lambda calculus. For example we can define a function in java:
+
+public int f(int x){
+  return x;
+}
+
+here f can represent (λx.M), x can represent that the input should be an integer, and M can represent the argument x that is passed through. essentially is an argument of type lambda is passed through a lambda function, you would simply return the argument. 
+After making comparisions to imperative programming languges, it became easier to understand how to apply arguments to functions. 
+
+Lambda Calculus is extremely important because it is the most universal mode of computation and can be used to simulate any Turing machine, and now it makes sense why learning this is important to create a new programming language, because all the logic is dependent on abstraction/variables/application. 
+
+
+I wanted to know more about how lambda calculus is applied nowadays, because even if we know it's the most universal mode of computing, we don't really learn why it's important or how it has been used. For example, even if different imperative programming languages have different syntax, the lambdas in all these languages stay the same and can be used the same way. Lambda calculus is universal in all these imperative languages. Also, Lambda calculus is important for time complexity. Using beta reduction, a function that is defined using the behaviour of lambda calculus can keep a time complexity of O(n) no matter how complicated the logic of the function might be. 
+
+Next we will talk about Abstract Reducition System to understand how to parse an expression with multiple lambda functions. 
