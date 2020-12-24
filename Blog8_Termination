@@ -1,0 +1,27 @@
+An ARS terminating has a direct relationship to both functional and imperative programming. 
+
+For functional programming, if an ARS doesn't terminate, this is equivalent to a function that doesn't have a base case and the function constantly calls itself, and an output will therefore never be returned. 
+
+For imperative programming, if an ARS doesn't terminate, this is equivalent to a while or for loop that doesn't have a condition to break out of it, so they would constantly loop a block of code and they will not be able to break out of it.
+
+This is why it is so important for a mathematical concept like an ARS to terminate, because this type of logic has huge consequences in real software if not detected. 
+
+In order to check if an ARS truly terminates, we can use something called a measure function. A measure function is a function that checks if an ARS terminates based on whether the rules are given as inputs gives results that are true. The format looks something like this:
+
+In an ARS (A, ->), the function f A -> N is a measure function if a -> b implies f(a) > f(b)
+
+For example: x = 1, y = 2
+
+x -> y (1 -> 2)
+x -> yy (1 -> 22)
+xy -> yx (12 -> 21)
+xyx -> yxx (121 -> 211)
+
+as we can see, all values on the left side are less than the ones on the right side, so we know that this ARS will terminate. 
+
+
+Even though theoretically we can say an ARS will terminate, it is hard to prove that the same ARS written in imperative programming terms will terminate. There is a study done by the CS department at the University of New Mexico to see whethere termination can be proved using imperative programming with the approach of term rewriting. They used the presburger arithmetic to translate imperative programming into constrained terms of a rewrite system on operating numbers. They were successful in proving termination because the presburger apprach allowed for techniques such as graph-based decompsition and polynomial interpretations to be used. Read further on it here: https://www.cs.unm.edu/~treport/tr/08-02/imperative.pdf
+
+Next we will talk about invariants. 
+
+
