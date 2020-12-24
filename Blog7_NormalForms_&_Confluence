@@ -1,0 +1,29 @@
+To fully understand how an ARS is fundamental to functional programming, it is important to understand what normal forms and confluence are. This is because an ARS best describes the relationship between meaning (equivalence relation) and computation. The best case scenario for any computation is that an expression can be simplified before computation, and if an expression is simplified, it can reduce the memory used in a CPU during the computation. Simplification in english language is equivalent to what a normal form is in an ARS.
+
+Normal Form simply means that an expression is irreducible. If an expression no longer has any rules that can be applied to further reduce it, then we have reached the normal form. A unique normal form happens in the set of rules when there is only one element that reduces to another element. For example:
+
+set {x, y, z, i, a}
+
+x -> y
+x -> z
+z -> y
+i -> a
+
+x and y are in normal forms, while i is in unique normal form because there is only one rule for reducing it. 
+
+Confluence, to my understanding, is more of an overall property of an ARS. An ARS is confluent if an expression does not reduce to multiple forms, meaning that the rules don't overlap. 
+
+
+For example:
+
+set {q, w, e, r, t, y,}
+q -> w
+w -> e
+r -> t
+t -> y
+
+if this ARS was not confluent, that would mean that there is a rule that cannot be traced back to a common "ancestor" or in this case q. 
+
+Confluence is important because it also provides logical reasoning for how trees work, and this logic could be used in abstract/conccrete syntax parsing in Haskell from before. confluence in an ARS is just one way to finding theory that matches to applicaition of functional programming. 
+
+Next we will talk more about Termination and what invariants are in an ARS. 
