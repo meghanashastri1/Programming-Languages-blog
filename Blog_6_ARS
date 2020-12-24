@@ -1,0 +1,16 @@
+This is an introduction to Abstract Reduction Systems. 
+
+The way I see it, a basic ARS is a set of rules that converts expressions until it can be reduced to a smaller expression, and we examine the expression from left to right with these rules. 
+
+For example, if we have a set that contains the variables {a, b, c, d} with the following rules:
+
+aa -> b
+bc -> d
+ca -> ab
+d -> []
+
+and we have the string abcaa, we can reduce it to: abcb -> adb -> ab
+
+Since there are no rules that can reduce ab to something else, we have reduced abcaa to the smallest possible value and the ARS terminates here. 
+
+In the next blog, we will talk about normal/confluent forms, and how an ARS will be able to terminate 
